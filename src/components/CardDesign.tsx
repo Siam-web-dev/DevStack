@@ -1,7 +1,16 @@
+import { toast } from "react-toastify";
 import type { dataType } from "../type/dataType";
 import { FaStar } from "react-icons/fa";
 
-const CardDesign = ({card} : {card : dataType}) => {
+const CardDesign = ({
+    card ,
+    addToStack,
+    isSelected
+} : {
+    card : dataType ;
+    addToStack: (card: dataType) => void;
+    isSelected: boolean;
+}) => {
     return (
         <div className="space-y-5">
             <div className="flex justify-between">
@@ -20,7 +29,15 @@ const CardDesign = ({card} : {card : dataType}) => {
                     <p> {card.rating} </p>
              </div>
             </div>
-            <button className=" text-white w-full rounded-lg py-2 bg-[#0A0F1D] ">Add to Stack</button>
+            <button
+            onClick={() => addToStack(card)} 
+            disabled = {isSelected}
+             className={`text-white w-full rounded-lg py-2 ${isSelected ? "bg-gray-400 cursor-not-allowed" : "bg-[#0A0F1D]"}`}>
+
+                {isSelected ? "Added" : "Add to Stack"}
+                
+                
+            </button>
 
         </div>
     );
