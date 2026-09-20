@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+
 import type { dataType } from "../type/dataType";
 import { FaStar } from "react-icons/fa";
 
