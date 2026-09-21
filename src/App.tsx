@@ -5,6 +5,7 @@ import { Suspense, useState } from "react";
 import type { dataType } from "./type/dataType";
 import TechnologyList from "./components/TechnologyList";
 import { toast, ToastContainer , Bounce } from "react-toastify";
+import Footer from "./components/Footer";
 
 
 
@@ -68,6 +69,7 @@ function App() {
         </section>
       </main>
       <ToastContainer></ToastContainer>
+      <Footer></Footer>
     </>
   )
 }
