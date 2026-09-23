@@ -9,8 +9,8 @@ const Hero = () => {
         compare them side by side, and put together the stack that fits your <br />
         next project. </p>
         <div className="flex gap-10">
-            <button className=" bg-linear-to-r from-[#FF5722]  to-[#7C3AED] p-2 rounded-md font-semibold text-w text-white ">Explore Technologies</button>
-        <button className=" p-2 rounded-md font-semibold text-black">Learn More</button>
+            <button className=" bg-linear-to-r from-[#FF5722]  to-[#7C3AED] p-2 cursor-pointer rounded-md font-semibold text-w text-white ">Explore Technologies</button>
+        <button className=" p-2 rounded-md font-semibold text-black cursor-pointer">Learn More</button>
         </div>
       </div>
       

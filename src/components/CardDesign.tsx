@@ -13,7 +13,7 @@ const CardDesign = ({
 }) => {
 
     return (
-        <div className="space-y-5">
+        <div className="space-y-5  border-2 p-3 rounded-2xl border-[#8B5CF6] ">
             <div className="flex justify-between">
                 <img src={card.icon} alt="" className=" w-10 h-auto " />
                 <p className=" text-[#2695c9] "> {card.badge} </p>
@@ -33,7 +33,7 @@ const CardDesign = ({
             <button
             onClick={() => addToStack(card)} 
             disabled = {isSelected}
-             className={`text-white w-full rounded-lg py-2 ${isSelected ? "bg-gray-400 cursor-not-allowed" : "bg-[#0A0F1D]"}`}>
+             className={`text-white w-full rounded-lg py-2 cursor-pointer ${isSelected ? "bg-gray-400 " : "bg-[#0A0F1D]"}`}>
 
                 {isSelected ? "✓ Added to Stack" : "Add to Stack"}
                 

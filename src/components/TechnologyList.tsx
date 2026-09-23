@@ -1,5 +1,6 @@
-import { MdOutlineDeleteForever } from "react-icons/md";
+
 import type { dataType } from "../type/dataType";
+import { GrClose } from "react-icons/gr";
 
 
 
@@ -31,8 +32,8 @@ const TechnologyList = ( {
                                 <p className="text-xs text-[#64748B]">{item.category}</p>
                             </div>
                             </div>
-                        <button onClick={ () => removeStack(item.id)} className="text-red-700 text-lg" >
-                            <MdOutlineDeleteForever></MdOutlineDeleteForever>
+                        <button onClick={ () => removeStack(item.id)} className="text-red-700 text-lg font-bold cursor-pointer " >
+                            <GrClose />
                             
                         </button>
                         </div>
@@ -42,7 +43,7 @@ const TechnologyList = ( {
              {technology.length > 0 && (
         <button
           onClick={removeAll}
-          className="mt-4 w-full text-red-500 font-semibold border border-red-500 rounded-lg py-2 text-sm"
+          className="mt-4 w-full text-red-500 font-semibold border border-red-500 rounded-lg py-2 text-sm cursor-pointer "
         >
           Remove All
         </button>
