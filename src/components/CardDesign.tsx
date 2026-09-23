@@ -11,6 +11,7 @@ const CardDesign = ({
     addToStack: (card: dataType) => void;
     isSelected: boolean;
 }) => {
+
     return (
         <div className="space-y-5">
             <div className="flex justify-between">
@@ -34,7 +35,7 @@ const CardDesign = ({
             disabled = {isSelected}
              className={`text-white w-full rounded-lg py-2 ${isSelected ? "bg-gray-400 cursor-not-allowed" : "bg-[#0A0F1D]"}`}>
 
-                {isSelected ? "Added" : "Add to Stack"}
+                {isSelected ? "✓ Added to Stack" : "Add to Stack"}
                 
                 
             </button>

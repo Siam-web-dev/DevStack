@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 
 
 
+
 const cardData = async() => {
   const res =  await fetch("/data.json") ;
   const data = await res.json();
@@ -22,15 +23,23 @@ function App() {
   const [technology , setTechnology] = useState<dataType[]>([])
 
   const addToStack = ( card : dataType) => {
-    setTechnology((prev) => {
-      const alreadyExists = prev.find((item) => item.id === card.id );
-      if (alreadyExists) return prev ; 
-      return [...prev, card] ;  
+
+      const alreadyExists = technology.find((item) => item.id === card.id );
+      if (alreadyExists) {
+        toast.success(`${card.name} is already in your stack!`, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+        transition: Bounce,
+      }) ;
+       return ;
+      } 
+
+      setTechnology((prev) => [...prev, card]);  
       
-    }) ;
-    toast('Successfully Added To Your Stack', {
+    toast.success(`${card.name} Added To Your Stack`, {
     position: "top-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: false,
     pauseOnHover: true,
@@ -43,11 +52,19 @@ function App() {
 
   const removeStack = (id : string | number) => {
     setTechnology((prev) => prev.filter ((item) => item.id !== id) ) ;
-     
+     toast.info(`Item remove from stack`)
   }
 
   const removeAll = () => {
     setTechnology([]) ;
+    toast.warn("Stack Cleard!" , {
+      position : "top-right",
+      autoClose: 3000,
+      theme: "light",
+      transition: Bounce,
+    })
+
+  
   }
   return (
     <>
@@ -59,12 +76,13 @@ function App() {
           <p className="text-[#64748B]">Pick one technology per category to build your ideal stack.</p>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-5  ">
             {/* cards */}
-             <Suspense fallback = { <div>Loading...</div> }>
+             <Suspense fallback = { <div className="text-lg text-[#64748B] mt-10"> Please wait until the items Loading....</div> }>
                <Cards cardDataPromise = {cardDataPromise} technology = {technology} addToStack = {addToStack}  ></Cards>
+                <TechnologyList technology = {technology} removeStack = {removeStack} removeAll = {removeAll} ></TechnologyList>
              </Suspense>
 
             {/* selectedCards */}
-            <TechnologyList technology = {technology} removeStack = {removeStack} removeAll = {removeAll} ></TechnologyList>
+           
           </div>
         </section>
       </main>
